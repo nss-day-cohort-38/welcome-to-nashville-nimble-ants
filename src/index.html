@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 
 <body>
@@ -30,7 +31,8 @@
 
             <div>
                 <label for="search-concerts">Search Concerts</label>
-                <input type="text" id="search-concerts">
+                <input list="genres" type="list" id="search-concerts" value="Alternative">
+                <datalist id="genres"></datalist>
                 <button type="submit" id="search-concerts-btn">Submit</button>
             </div>
 
@@ -53,6 +55,26 @@
     </section>
 
     <footer></footer>
+
+    <script src="../api/apiKeys.js"></script>
+
+    <!-- Concert Scripts -->
+    <script src="scripts/concerts/concert-genres.js"></script>
+    <script src="scripts/concerts/concerts-searchEventManager.js"></script>
+    <script src="scripts/concerts/concert-get-genre-id.js"></script>
+    <script src="scripts/concerts/concert-apiManager.js"></script>
+
+
+    <!-- Parks Scripts -->
+
+
+
+    <!-- Restaurant Scripts -->
+
+
+
+    <script src="scripts/main.js"></script>
+
 </body>
 
 </html>
