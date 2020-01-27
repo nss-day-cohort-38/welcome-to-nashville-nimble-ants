@@ -9,9 +9,6 @@ const searchEventManager = {
             const concertResults = APIManager.searchConcertGenre(genreId);
             concertResults.then(data => console.log(data._embedded.events));
         });
-    },
-    addInputEventListener() {
-        
     }
 
 };

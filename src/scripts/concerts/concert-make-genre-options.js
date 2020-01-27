@@ -6,8 +6,10 @@ const makeOptions = {
             console.log(element.name);
             genreOptions.innerHTML += `<option value="${element.name}">`;
         });
-        console.log(genreOptions);
+        // console.log(genreOptions);
         searchEventManager.addButtonEventListener();
+        concertsDOMManager.
+
     },
 }
 

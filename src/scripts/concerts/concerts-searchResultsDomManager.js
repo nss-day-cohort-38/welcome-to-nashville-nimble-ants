@@ -5,5 +5,6 @@ const concertsDOMManager = {
     renderResults(){
         const resultContainer = document.querySelector("#search-results");
         
+
     }
 }
