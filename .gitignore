@@ -1,5 +1,5 @@
 .DS_Store
 
-api/apikeys.js
-
 api/itinerary.json
+
+api/apiKeys.js
