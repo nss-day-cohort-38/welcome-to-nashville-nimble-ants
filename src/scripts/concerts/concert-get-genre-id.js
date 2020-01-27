@@ -1,6 +1,6 @@
 const getId = {
     getGenreId(genre){
-        const searchText = genre.toLowerCase();
+        const searchText = genre;
         let genreId;
         genresObj.forEach(element => {
             if (element.name == searchText){

@@ -8,11 +8,3 @@ const APIManager = {
             .then(response => response.json());
     }
 };
-
-
-// let search = APIManager.searchConcertGenre(/* "Country" */);
-// search.then(data => console.log(data));
-// genre=Country&
-// concerts_apiManager.js
-// concerts_searchEventManaager.js
-// concerts_searchResultsDomManager.js

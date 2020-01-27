@@ -1,5 +1,5 @@
 const searchEventManager = {
-    addEventListener() {
+    addButtonEventListener() {
         const concertBtn = document.getElementById("search-concerts-btn");
         concertBtn.addEventListener("click", (e) => {
             e.preventDefault();
@@ -9,9 +9,13 @@ const searchEventManager = {
             const concertResults = APIManager.searchConcertGenre(genreId);
             concertResults.then(data => console.log(data._embedded.events));
         });
+    },
+    addInputEventListener() {
+        
     }
+
 };
 
-searchEventManager.addEventListener();
+// searchEventManager.addEventListener();
 
 // <option value="Blue Moon">
