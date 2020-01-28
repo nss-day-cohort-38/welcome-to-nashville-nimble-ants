@@ -4,16 +4,15 @@ let genreId;
 const searchEventManager = {
     addButtonEventListener(genreObj) {
         const concertBtn = document.getElementById("search-concerts-btn");
-        concertBtn.addEventListener("click", (e) => {
-
+        concertBtn.addEventListener("click", () => {
+            
             const input = document.getElementById("search-concerts");
             searchText = input.value;
-            console.log(searchText);
             const isGenre = validateData.validateGenre(searchText, genreObj);
-            console.log(isGenre);
             if (isGenre) {
-                console.log("is genre");
                 genreId = getId.getGenreId(searchText, genreObj);
+                let loader = `<div class="boxLoading">Loading Searches...</div>`;
+                document.getElementById('search-results').innerHTML = loader;
                 const concertResults = APIManager.searchConcertGenre(genreId);
                 concertResults.then(data => {
                     if ("_embedded" in data) {
@@ -32,16 +31,17 @@ const searchEventManager = {
     },
     addSaveButtonEvent(id) {
         const saveButtons = document.getElementById(`concert-btn-${id}`);
-        saveButtons.addEventListener("click", (e) => {
+        saveButtons.addEventListener("click", () => {
             concertsDOMManager.renderItinerary(document.getElementById(`concert-name-${id}`).innerHTML);
         });
     },
     addKeywordButtonEvent() {
         const concertKeyBtn = document.getElementById("search-concerts-keyword-btn");
-        concertKeyBtn.addEventListener("click", (e) => {
-            e.preventDefault();
+        concertKeyBtn.addEventListener("click", () => {
             const input = document.getElementById("search-concerts-keyword");
             searchText = input.value;
+            let loader = `<div class="boxLoading">Loading Searches...</div>`;
+                document.getElementById('search-results').innerHTML = loader;
             const concertResults = APIManager.searchConcertKeyword(searchText);
             concertResults.then(data => {
                 if ("_embedded" in data) {
@@ -56,20 +56,25 @@ const searchEventManager = {
     },
     addPagesButtonEvents(buttonNode, j, topic) {
         if (topic == "genre") {
-            buttonNode.addEventListener("click", () => {
+            buttonNode.addEventListener("click", (e) => {
+                let loader = `<div class="boxLoading">Loading Searches...</div>`;
+                document.getElementById('search-results').innerHTML = loader;
+                const currentID = `${e.target.id}`;
+                // document.getElementById(`${currentID}`).style.backgroundColor = "red";
+                console.log(document.getElementById("page-10"));
                 let genrePromise = APIManager.searchConcertGenrePage(genreId, j);
                 genrePromise.then(data => {
                     if ("_embedded" in data) {
-                        console.log(searchText);
-                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText);
+                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText, currentID);
                     } else {
-
-                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "genre", );
+                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "genre");
                     }
                 });
             });
         } else if (topic == "keyword") {
             buttonNode.addEventListener("click", () => {
+                let loader = `<div class="boxLoading">Loading Searches...</div>`;
+                document.getElementById('search-results').innerHTML = loader;
                 let keywordPromise = APIManager.searchConcertKeywordPage(searchText, j);
                 keywordPromise.then(data => {
                     if ("_embedded" in data) {

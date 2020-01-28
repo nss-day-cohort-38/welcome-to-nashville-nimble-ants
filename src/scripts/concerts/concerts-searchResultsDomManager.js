@@ -18,7 +18,8 @@ const concertsDOMManager = {
         return concertHTML;
         // <!-- <img src="${concert.images[0].url}" alt=""> -->
     },
-    renderResults(concerts, pages, searchType, searchText) {
+    renderResults(concerts, pages, searchType, searchText, currentID) {
+
         let i = 0;
         const resultContainer = document.querySelector("#search-results");
         resultContainer.innerHTML = "";
@@ -45,6 +46,10 @@ const concertsDOMManager = {
             for (let j = 0; j < pages; j++) {
                 let pageButtonHTML = `<button type="submit" id="page-${j + 1}">${j + 1}</button>`;
                 pageContainer.innerHTML += pageButtonHTML;
+                if (`page-${j + 1}` == currentID){
+                    document.getElementById(currentID).style.backgroundColor = "grey";
+                    
+                }
             }
 
 
