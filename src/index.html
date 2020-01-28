@@ -29,9 +29,15 @@
 
 
             <div>
-                <label for="search-concerts">Search Concerts</label>
-                <input type="text" id="search-concerts">
+                <label for="search-concerts">Search Concerts Genres</label>
+                <input list="genre-options" type="list" id="search-concerts">
+                <datalist id="genre-options"></datalist>
                 <button type="submit" id="search-concerts-btn">Submit</button>
+            </div>
+            <div>
+                <label for="search-concerts-keyword">Search Concerts Keyword</label>
+                <input type="text" id="search-concerts-keyword">
+                <button type="submit" id="search-concerts-keyword-btn">Submit</button>
             </div>
 
 
@@ -59,13 +65,25 @@
     </section>
 
     <footer></footer>
-<!-- PARKS API SCRIPTS -->
+
+    <script src="../api/apiKeys.js"></script>
+
+    <!-- Concert Scripts -->
+    <script src="scripts/concerts/concert-genres.js"></script>
+    <script src="scripts/concerts/concerts-searchEventManager.js"></script>
+    <script src="scripts/concerts/concerts-searchResultsDomManager.js"></script>
+    <script src="scripts/concerts/concert-make-genre-options.js"></script>
+    <script src="scripts/concerts/concert-get-genre-id.js"></script>
+    <script src="scripts/concerts/concert-apiManager.js"></script>
+
+    <!-- PARKS API SCRIPTS -->
     <script src="./scripts/parks/parks_apiManager.js"></script>
     <script src="./scripts/parks/parks_searchResultsDomManager.js"></script>
     <script src="./scripts/parks/parks_searchEventManager.js"></script>
     <script src="./scripts/parks/parkshtml.js"></script>
     <script src="./scripts/parks/parksitin.js"></script>
-<!-- END PARKS API SCRIPTS -->
+
+    <!-- END PARKS API SCRIPTS -->
     <script src="./scripts/main.js"></script>
 </body>
 
