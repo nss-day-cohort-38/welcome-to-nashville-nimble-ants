@@ -16,7 +16,6 @@ const APIManager = {
     searchConcertKeywordPage(searchCriteria, page){
         const criteria = encodeURIComponent(searchCriteria);
         const url = concertUrl + `&keyword=${criteria}&page=${page}`;
-        console.log(criteria, "criteria");
         return fetch(url)
             .then(response => response.json());
     },

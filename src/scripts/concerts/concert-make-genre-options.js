@@ -5,7 +5,6 @@ const makeOptions = {
         genresObj.forEach(element => {
             genreOptions.innerHTML += `<option value="${element.name}">`;
         });
-        // console.log(genreOptions);
         searchEventManager.addButtonEventListener(genresObj);
         
 

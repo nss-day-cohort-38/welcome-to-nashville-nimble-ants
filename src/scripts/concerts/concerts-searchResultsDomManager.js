@@ -1,6 +1,5 @@
 const concertsDOMManager = {
     resultHTML(concert, i) {
-        // console.log(concert);
         const noteProp = "pleaseNote";
         const note = noteProp in concert ? concert.pleaseNote : "";
         let addressLine1 = "address" in concert._embedded.venues[0] ? concert._embedded.venues[0].address.line1 : "No Address Listed";
@@ -21,32 +20,13 @@ const concertsDOMManager = {
     },
     renderResults(concerts, pages, searchType) {
         let i = 0;
-        // console.log(concerts);
         const resultContainer = document.querySelector("#search-results");
         resultContainer.innerHTML = "";
         if (typeof concerts == "string") {
             resultContainer.innerHTML = `<p>${concerts}</p>`;
-            // resultContainer.innerHTML += `<div id="page-container"></div>`;
-
-            // let pageContainer = document.getElementById("page-container");
-            // console.log(pageContainer);
-            // console.log(pages);
-            // for (let j = 1; j < pages; j++) {
-            //     let pageButtonHTML = `<button type="submit" id="page-${j}">${j}</button>`;
-            //     pageContainer.innerHTML += pageButtonHTML;
-            // }
-            // // page.innerHTML
-            // for (let j = 1; j < pages; j++) {
-                
-            //     searchEventManager.addPagesButtonEvents(document.getElementById(`page-${j}`), j, searchType);
-            //     // let pageButtonHTML = `<button type="submit" id="page-${j}">${j}</button>`;
-            //     // pageContainer.innerHTML += pageButtonHTML;
-            // }
-
         } else {
             concerts.forEach(concert => {
                 i++;
-                // console.log(this.resultHTML(concert, i, pages));
                 resultContainer.innerHTML += this.resultHTML(concert, i, pages);
             });
 
@@ -60,17 +40,14 @@ const concertsDOMManager = {
             resultContainer.innerHTML += `<div id="page-container"></div>`;
     
             let pageContainer = document.getElementById("page-container");
-            for (let j = 1; j < pages; j++) {
-                let pageButtonHTML = `<button type="submit" id="page-${j}">${j}</button>`;
+            for (let j = 0; j < pages; j++) {
+                let pageButtonHTML = `<button type="submit" id="page-${j + 1}">${j + 1}</button>`;
                 pageContainer.innerHTML += pageButtonHTML;
             }
 
 
-            for (let j = 1; j < pages; j++) {
-                
-                searchEventManager.addPagesButtonEvents(document.getElementById(`page-${j}`), j, searchType);
-                // let pageButtonHTML = `<button type="submit" id="page-${j}">${j}</button>`;
-                // pageContainer.innerHTML += pageButtonHTML;
+            for (let j = 0; j < pages; j++) { 
+                searchEventManager.addPagesButtonEvents(document.getElementById(`page-${j + 1}`), j, searchType);
             }
             
         }
