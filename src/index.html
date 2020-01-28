@@ -14,13 +14,8 @@
         <h2>Welcome to Nashville</h2>
     </header>
     <section id="search">
-<<<<<<< HEAD
-            <div id="formSearch">
-                <div>
-=======
         <div id="formSearch">
             <div id="search-parks">
->>>>>>> master
                 <label for="search-parks">Search Parks</label>
                 <input name="" type="text" id="search-parks">
                 <button type="submit" id="search-parks-btn">Submit</button>
@@ -34,9 +29,15 @@
 
 
             <div>
-                <label for="search-concerts">Search Concerts</label>
-                <input type="text" id="search-concerts">
+                <label for="search-concerts">Search Concerts Genres</label>
+                <input list="genre-options" type="list" id="search-concerts">
+                <datalist id="genre-options"></datalist>
                 <button type="submit" id="search-concerts-btn">Submit</button>
+            </div>
+            <div>
+                <label for="search-concerts-keyword">Search Concerts Keyword</label>
+                <input type="text" id="search-concerts-keyword">
+                <button type="submit" id="search-concerts-keyword-btn">Submit</button>
             </div>
 
 
@@ -64,6 +65,11 @@
     </section>
 
     <footer></footer>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> master
     <button id="clickme">
         Click Me
     </button>
@@ -73,12 +79,27 @@
     <script src="scripts/restaurantsAPIManager.js"></script>
     <script src="scripts/main.js"></script>
 <!-- PARKS API SCRIPTS -->
+=======
+
+    <script src="../api/apiKeys.js"></script>
+
+    <!-- Concert Scripts -->
+    <script src="scripts/concerts/concert-genres.js"></script>
+    <script src="scripts/concerts/concerts-searchEventManager.js"></script>
+    <script src="scripts/concerts/concerts-searchResultsDomManager.js"></script>
+    <script src="scripts/concerts/concert-make-genre-options.js"></script>
+    <script src="scripts/concerts/concert-get-genre-id.js"></script>
+    <script src="scripts/concerts/concert-apiManager.js"></script>
+
+    <!-- PARKS API SCRIPTS -->
+>>>>>>> 5d708b109089404c0bd824fef620e86c39c8cf3f
     <script src="./scripts/parks/parks_apiManager.js"></script>
     <script src="./scripts/parks/parks_searchResultsDomManager.js"></script>
     <script src="./scripts/parks/parks_searchEventManager.js"></script>
     <script src="./scripts/parks/parkshtml.js"></script>
     <script src="./scripts/parks/parksitin.js"></script>
-<!-- END PARKS API SCRIPTS -->
+
+    <!-- END PARKS API SCRIPTS -->
     <script src="./scripts/main.js"></script>
 </body>
 
