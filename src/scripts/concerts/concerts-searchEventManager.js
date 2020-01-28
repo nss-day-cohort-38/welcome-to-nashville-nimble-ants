@@ -8,7 +8,8 @@ const searchEventManager = {
             
             const input = document.getElementById("search-concerts");
             searchText = input.value;
-            const isGenre = validateData.validateGenre(searchText, genreObj);
+            let isGenre = true;
+            isGenre = validateData.validateGenre(searchText, genreObj);
             if (isGenre) {
                 genreId = getId.getGenreId(searchText, genreObj);
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;

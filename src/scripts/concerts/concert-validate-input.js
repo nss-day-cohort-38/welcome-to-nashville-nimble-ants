@@ -3,8 +3,6 @@ const validateData = {
         for (prop in genreObj){
             if (input == genreObj[prop].name) {
                 return true;
-            } else {
-                return false;
             }
         }
     }
