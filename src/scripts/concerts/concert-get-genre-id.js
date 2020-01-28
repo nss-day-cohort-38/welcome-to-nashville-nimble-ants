@@ -1,5 +1,5 @@
 const getId = {
-    getGenreId(genre){
+    getGenreId(genre, genresObj){
         const searchText = genre;
         let genreId;
         genresObj.forEach(element => {

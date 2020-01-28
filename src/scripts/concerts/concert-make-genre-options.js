@@ -1,5 +1,5 @@
 const makeOptions = {
-    makeConcertOptions() {
+    makeConcertOptions(genresObj) {
         const genreOptions = document.querySelector("#genre-options");
         genreOptions.innerHTML = "";
         genresObj.forEach(element => {
@@ -7,10 +7,9 @@ const makeOptions = {
             genreOptions.innerHTML += `<option value="${element.name}">`;
         });
         // console.log(genreOptions);
-        searchEventManager.addButtonEventListener();
-        concertsDOMManager.
+        searchEventManager.addButtonEventListener(genresObj);
+        
 
-    },
+    }
 }
 
-makeOptions.makeConcertOptions();

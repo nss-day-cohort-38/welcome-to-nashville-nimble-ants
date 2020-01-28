@@ -4,6 +4,7 @@ const APIManager = {
     searchConcertGenre(genreId) {
         // const criteria = encodeURIComponent(searchCriteria);
         const url = concertUrl + `&genreId=${genreId}`;
+        console.log(url);
         return fetch(url)
             .then(response => response.json());
     }
