@@ -1,24 +1,20 @@
+document
+  .getElementById("search-restaurants-btn")
+  .addEventListener("click", event => {
+    event.preventDefault();
 
-document.getElementById("search-restaurants-btn").addEventListener("click", () => {
-  fetch(URL)
-    .then(response => response.json())
-    .then(restaurants => {
-      const restaurantList = restaurants.restaurants;
-      const restaurantData = restaurantList.map(({ restaurant }) => {
-        const name = restaurant.name;
-        const address = restaurant.location.address;
-        return {
-          name,
-          address
-        };
+    const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&start=first&sort=rating&apikey=c460f1e9d15428b644335618a7e14819`;
+    fetch(URL)
+      .then(response => response.json())
+      .then(restaurants => {
+        const restaurantList = restaurants.restaurants;
+        const restaurantData = restaurantList.map(({ restaurant }) => {
+          return {
+            name: restaurant.name,
+            address: restaurant.location.address
+          };
+        });
+
+        renderComponents(restaurantData);
       });
-      console.log("restaurantData: ", restaurantData);
-      let restaurantDataComponents = [];
-      restaurantData.forEach(restaurant => {
-        restaurantDataComponents.push(restaurantFactory(restaurant));
-      });
-      restaurantDataComponents.forEach(component => {
-        renderRestaurant(component);
-      });
-    });
-});
+  });
