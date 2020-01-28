@@ -30,10 +30,15 @@
 
 
             <div>
-                <label for="search-concerts">Search Concerts</label>
-                <input list="genre-options" type="list" id="search-concerts" value="Alternative">
+                <label for="search-concerts">Search Concerts Genres</label>
+                <input list="genre-options" type="list" id="search-concerts">
                 <datalist id="genre-options"></datalist>
                 <button type="submit" id="search-concerts-btn">Submit</button>
+            </div>
+            <div>
+                <label for="search-concerts-keyword">Search Concerts Keyword</label>
+                <input type="text" id="search-concerts-keyword">
+                <button type="submit" id="search-concerts-keyword-btn">Submit</button>
             </div>
 
 
@@ -65,17 +70,8 @@
     <script src="scripts/concerts/concert-make-genre-options.js"></script>
     <script src="scripts/concerts/concert-get-genre-id.js"></script>
     <script src="scripts/concerts/concert-apiManager.js"></script>
-
-
-    <!-- Parks Scripts -->
-
-
-
-    <!-- Restaurant Scripts -->
-
-
-
-    <script src="scripts/main.js"></script>
+    
+<script src="scripts/main.js"></script>
 
 </body>
 

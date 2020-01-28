@@ -1,33 +1,80 @@
+let searchText;
+let genreId;
+
 const searchEventManager = {
     addButtonEventListener(genreObj) {
         const concertBtn = document.getElementById("search-concerts-btn");
-        console.log(concertBtn);
         concertBtn.addEventListener("click", (e) => {
+            console.log("genre event");
+
             e.preventDefault();
             const input = document.getElementById("search-concerts");
             const searchText = input.value;
-            const genreId = getId.getGenreId(searchText, genreObj);
+            genreId = getId.getGenreId(searchText, genreObj);
             const concertResults = APIManager.searchConcertGenre(genreId);
             concertResults.then(data => {
-                // console.log(data);
+                console.log(data);
                 if ("_embedded" in data) {
                     console.log();
-                    concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages);
-                    
+                    concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre");
+
+                } else {
+                    concertsDOMManager.renderResults("There are no concerts of this genre at this time");
+                }
+            });
+        });
+
+    },
+    addSaveButtonEvent(id) {
+        const saveButtons = document.getElementById(`concert-btn-${id}`);
+        saveButtons.addEventListener("click", (e) => {
+            // Addtoitenerary(e.target.parentNode.innerHTML);
+        });
+    },
+    addKeywordButtonEvent() {
+        const concertKeyBtn = document.getElementById("search-concerts-keyword-btn");
+        concertKeyBtn.addEventListener("click", (e) => {
+            console.log("keyword event");
+            e.preventDefault();
+            const input = document.getElementById("search-concerts-keyword");
+            searchText = input.value;
+            const concertResults = APIManager.searchConcertKeyword(searchText);
+            concertResults.then(data => {
+                if ("_embedded" in data) {
+                    console.log();
+                    concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword");
                 } else {
                     concertsDOMManager.renderResults("There are no concerts of this genre at this time");
                 }
             });
         });
     },
-    addSaveButtonEvent(id){
-        const saveButtons = document.getElementById(`concert-btn-${id}`);
-        saveButtons.addEventListener("click", (e) => {
-            // Addtoitenerary(e.target.parentNode.innerHTML);
-            console.log(e.target.parentNode);
-        });
-    },
-    addPagesButtonEvents(){
-        
+    addPagesButtonEvents(buttonNode, j, topic) {
+        if (topic == "genre") {
+            buttonNode.addEventListener("click", () => {
+                let genrePromise = APIManager.searchConcertGenrePage(genreId, j);
+                genrePromise.then(data => {
+                    if ("_embedded" in data) {
+                        console.log();
+                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre");
+                    } else {
+                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "genre");
+                    }
+                });
+            })
+        } else if (topic == "keyword") {
+            buttonNode.addEventListener("click", () => {
+                let keywordPromise = APIManager.searchConcertKeywordPage(searchText, j);
+                keywordPromise.then(data => {
+                    if ("_embedded" in data) {
+                        console.log();
+                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword");
+                    } else {
+                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "keyword");
+                    }
+                });
+            });
+        }
     }
 };
+searchEventManager.addKeywordButtonEvent();
