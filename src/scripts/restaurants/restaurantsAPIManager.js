@@ -1,3 +1,6 @@
+let loader = `<div class="boxLoading">Loading Searches...</div>`;
+document.getElementById("search-results").innerHTML = loader;
+
 document
   .getElementById("search-restaurants-btn")
   .addEventListener("click", () => {
@@ -6,18 +9,18 @@ document
       .then(response => response.json())
       .then(restaurants => {
         const restaurantList = restaurants.restaurants;
+        //console.log(restaurantList);
         const restaurantData = restaurantList.map(({ restaurant }) => {
           return {
             name: restaurant.name,
             address: restaurant.location.address
           };
         });
-console.log(restaurantData);
         renderComponents(restaurantData);
-      })
-      .catch((err) => {
-        // instead of calling renderComponents write a message something like
-        // const searchResultsContainer = document.getElementById("search-results");
-        // searchResultsContainer.innerHTML = "No Restaurants Found";
+        //console.log(restaurantData); // the array drilled down to name and address
       });
+    //.catch(err => {
+    // instead of calling renderComponents write a message something like
+    // const searchResultsContainer = document.getElementById("search-results");
+    // searchResultsContainer.innerHTML = "No Restaurants Found";
   });

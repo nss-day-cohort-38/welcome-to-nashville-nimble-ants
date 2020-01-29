@@ -1,19 +1,20 @@
+let number = 0;
 
-let num = 0;
-
-  const restaurantFactory = ({ name, address }) => {
+const createRestaurantComponent = {
+  restaurantFactory({ name, address }) {
+    //const address = JSON.parse(park.mapped_location.human_address);
     num++;
     return `
-      <section id="result-blocks-${num}">
-      <section id="restaurant-name">${name}</section>
-      <section>${address}</section>
-      <button id="rest__saveBtn_${num}">Save</button></<button>
-      </div>
+      <section id="result-blocks-${number}">
+      <div id="restaurant-name">${name}</div>
+      <div>${address}</div>
+      <button id="rest__saveBtn_${number}">Save</button></<button>
+      </section>
       `;
-  };
-
-   const renderSearchResults = (restaurantHTML) => {
+  },
+  renderRestaurant(restaurantHTML) {
     const container = document.getElementById("search-results");
     container.innerHTML = "";
-      container.innerHTML += restaurantHTML
-    };
+    container.innerHTML += restaurantHTML
+  }
+};
