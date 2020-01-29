@@ -8,7 +8,7 @@ const arts_searchResultsDomManager = {
                 <div class="art__name">${art.artwork} | ${art.first_name} ${art.last_name}</div>
                 <div class="art__location">${art.location}</div>
                 <div class="art__description">${art.description}</div>
-                <div class="art__link"><a href="${art.page_link.url} target='_blank'">more info</a></div>
+                <div class="art__link"><a href="${art.page_link.url}" target="_blank">more info</a></div>
                 <div id="art__saveBtn"><button id="art__saveBtn__${arts_num}" class="btn save__${arts_num}">Save</button></div>
             </section>
         `

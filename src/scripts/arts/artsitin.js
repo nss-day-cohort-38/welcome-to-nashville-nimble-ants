@@ -1,4 +1,4 @@
-const artsItin = document.getElementById("art__itin");
+const artsItin = document.getElementById("arts__itin");
 const arts_button = document.getElementById("art__saveBtn");
 const arts_searchResults = document.getElementById("search-results");
 
@@ -12,16 +12,17 @@ const artsItinSave = {
 }
 
 const arts_reply_click = (event) => {
-    console.log(event.target.id);
-    // const saveItin = document.getElementById(`art__${event.target.id.split("__")[2]}`);
-    // if (saveItin !== null) {
-    //     const save__parks__itin = saveItin.childNodes[1];
-    //     const display__parks__itin = save__parks__itin.innerText;
-    //     console.log(display__parks__itin);
-    //     parksItin.innerHTML = `<div id="park__itin">Park: ${display__parks__itin}</div>`
-    // } else {
-    //     console.log("OUCH! Please be careful where you click.")
-    // }
+    const arts_saveItin = document.getElementById(`arts__${event.target.id.split("__")[2]}`);
+    // console.log(arts_saveItin);
+    if (arts_saveItin !== null && arts_saveItin !== 'art__undefined') {
+        // console.log(arts_saveItin.childNodes);
+        const save__arts__itin = arts_saveItin.childNodes[1].innerText + ", " + arts_saveItin.childNodes[3].innerText;
+        const display__arts__itin = save__arts__itin;
+        // console.log(display__arts__itin);
+        artsItin.innerHTML = `<div id="arts__itin">Art: ${display__arts__itin}</div>`
+    } else {
+        // console.log("OUCH! Please be careful where you click.")
+    }
 }
 
 arts_searchResults.addEventListener("click", arts_reply_click);
