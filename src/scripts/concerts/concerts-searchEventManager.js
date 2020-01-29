@@ -10,7 +10,10 @@ const searchEventManager = {
             searchText = input.value;
             let isGenre = true;
             isGenre = validateData.validateGenre(searchText, genreObj);
-            if (isGenre) {
+            let isEmpty = validateData.isEmpty(searchText);
+            if (isEmpty){
+                alert("Input is empty!")
+            } else if (isGenre) {
                 genreId = getId.getGenreId(searchText, genreObj);
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
                 document.getElementById('search-results').innerHTML = loader;
@@ -30,6 +33,21 @@ const searchEventManager = {
         });
 
     },
+    addEnterEvent(id){
+        const input = document.getElementById(`search-${id}`);
+        // const keywordButton = document.getElementById("search-concerts-keyword-btn");
+        
+        input.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+              // Cancel the default action, if needed
+            //   event.preventDefault();
+              // Trigger the button element with a click
+              document.getElementById(`search-${id}-btn`).click();
+            }
+          });
+
+    },
     addSaveButtonEvent(id) {
         const saveButtons = document.getElementById(`concert-btn-${id}`);
         saveButtons.addEventListener("click", () => {
@@ -41,16 +59,21 @@ const searchEventManager = {
         concertKeyBtn.addEventListener("click", () => {
             const input = document.getElementById("search-concerts-keyword");
             searchText = input.value;
-            let loader = `<div class="boxLoading">Loading Searches...</div>`;
-                document.getElementById('search-results').innerHTML = loader;
-            const concertResults = APIManager.searchConcertKeyword(searchText);
-            concertResults.then(data => {
-                if ("_embedded" in data) {
-                    concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
-                } else {
-                    concertsDOMManager.renderResults(`There are no concerts with the keyword "${searchText}" at this time`);
-                }
-            });
+            let isEmpty = validateData.isEmpty(searchText);
+            if (isEmpty){
+                alert("Input is empty!");
+            } else {
+                let loader = `<div class="boxLoading">Loading Searches...</div>`;
+                    document.getElementById('search-results').innerHTML = loader;
+                const concertResults = APIManager.searchConcertKeyword(searchText);
+                concertResults.then(data => {
+                    if ("_embedded" in data) {
+                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
+                    } else {
+                        concertsDOMManager.renderResults(`There are no concerts with the keyword "${searchText}" at this time`);
+                    }
+                });
+            }
             input.value = "";
         });
 
@@ -88,4 +111,7 @@ const searchEventManager = {
         }
     }
 };
+searchEventManager.addEnterEvent("concerts");
+searchEventManager.addEnterEvent("concerts-keyword");
+
 searchEventManager.addKeywordButtonEvent();

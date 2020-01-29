@@ -5,5 +5,12 @@ const validateData = {
                 return true;
             }
         }
+    },
+    isEmpty(input){
+        let isEmpty = true;
+        if(/\S/.test(input)){
+            isEmpty = false;
+        }
+        return isEmpty;
     }
 };
