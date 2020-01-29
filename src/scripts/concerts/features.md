@@ -12,3 +12,5 @@
 - Save button adds the concert to the itinerary at the bottom of the page.
 - While API is fetching the data, the text Loading... shows on dom so user knows that the pages is loading.
 - if api is not working, an error alert will show where the error occurred in the code and the page will tell the user that the function is currently not working.
+- Input is validated so user cannot submit empty fields.
+- Search shows image for each concert.

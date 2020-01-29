@@ -6,8 +6,6 @@ const makeOptions = {
             genreOptions.innerHTML += `<option value="${element.name}">`;
         });
         searchEventManager.addButtonEventListener(genresObj);
-        
-
     }
 }
 

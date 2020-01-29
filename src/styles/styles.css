@@ -12,3 +12,25 @@
 #search-results section {
     margin: 10px;
 }
+
+
+/* Concert Styles */
+.concert {
+    display: flex;
+}
+
+.concert-text {
+    width: 50%;
+    overflow: hidden;
+    height: 200px;
+
+}
+.concert-img {
+    width: 50%;
+    overflow: hidden;
+    height: 200px;
+}
+
+.concert-img img {
+    width: 100%;
+}

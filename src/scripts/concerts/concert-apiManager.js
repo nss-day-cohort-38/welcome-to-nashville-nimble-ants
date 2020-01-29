@@ -2,7 +2,7 @@ const concertUrl = `https://app.ticketmaster.com/discovery/v2/events?apikey=${co
 
 const APIManager = {
     searchConcertGenre(genreId) {
-        const url = concertUrl + `${genreId}&page=0`;
+        const url = concertUrl + `&genreId=${genreId}&page=0`;
         console.log(url);
         return fetch(url)
             .then(response => response.json())
