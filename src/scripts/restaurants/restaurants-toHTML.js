@@ -1,4 +1,4 @@
-const restaurantFactory = ({ name, address }) => {
+const createRestaurantComponent = ({ name, address }) => {
     return `
       <div class="result-blocks">
       <section id="restaurant-name">${name}</section>

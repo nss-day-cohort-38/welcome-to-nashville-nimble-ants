@@ -10,7 +10,7 @@ const renderComponents = restaurantData => {
 
     let restaurantDataComponents = [];
     filteredRestaurantList.forEach(restaurant => {
-      restaurantDataComponents.push(restaurantFactory(restaurant));
+      restaurantDataComponents.push(createRestaurantComponent(restaurant));
     });
 
     restaurantDataComponents.forEach(component => {
