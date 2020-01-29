@@ -7,7 +7,7 @@ const renderComponents = restaurantData => {
     const filteredRestaurantList = restaurantData.filter((restaurant) => {
       return restaurant.name === userValue;
     });
-
+//if (filteredRestaurantList.length > 1) {}
     let restaurantDataComponents = [];
     filteredRestaurantList.forEach(restaurant => {
       restaurantDataComponents.push(createRestaurantComponent(restaurant));
@@ -17,3 +17,7 @@ const renderComponents = restaurantData => {
      renderRestaurant(component);
     });
 };
+// between line 18 and 19 .... else {
+  //const searchResultsContainer = document.getElementById("search-results");
+    //searchResultsContainer.innerHTML = "No Restaurants Found";
+  //};

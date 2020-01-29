@@ -12,7 +12,12 @@ document
             address: restaurant.location.address
           };
         });
-
+console.log(restaurantData);
         renderComponents(restaurantData);
+      })
+      .catch((err) => {
+        // instead of calling renderComponents write a message something like
+        // const searchResultsContainer = document.getElementById("search-results");
+        // searchResultsContainer.innerHTML = "No Restaurants Found";
       });
   });
