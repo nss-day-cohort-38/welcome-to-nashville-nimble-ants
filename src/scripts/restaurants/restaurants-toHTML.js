@@ -1,7 +1,7 @@
 const restaurantFactory = ({ name, address }) => {
     return `
       <div class="result-blocks">
-      <section>${name}</section>
+      <section id="restaurant-name">${name}</section>
       <section>${address}</section>
       <button id="rest__saveBtn">Save</button></<button>
       </div>

@@ -1,12 +1,9 @@
-const RestItinerary = document.getElementById("restaurant__itin");
-const clickSaveRestaurant = document.getElementById("result-blocks");
-const searchResults = document.getElementById("search-results");
-const restSaveButton = document.getElementById('rest__saveBtn');
-
-
-function handleHeaderMouseOver (event) {
-    restSaveButton.innerHTML += event
-}
-restSaveButton.addEventListener("click", () => {
-    console.log("Saved!")
-});
+document.querySelector('body').addEventListener('click', function(event) {
+    //console.log("event.target", event.target.id);
+    if (event.target.id === 'rest__saveBtn') {
+        const itinerarySection = document.getElementById("restaurant__itin");
+        const restaurantName = document.getElementById("restaurant-name").innerHTML;
+        // console.log("restaurantName: ", restaurantName);
+        itinerarySection.innerHTML = `Restaurant: ${restaurantName}`;
+    }
+  });
