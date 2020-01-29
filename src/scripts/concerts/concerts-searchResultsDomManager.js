@@ -37,13 +37,19 @@ const concertsDOMManager = {
             });
 
             i = 0;
+            
+            const searchHeader = document.createElement(`section`);
+            searchHeader.id = "search-header";
 
-            const pageContainer = document.createElement(`div`);
-            pageContainer.id = "page-container";
-
-            const searchTitle = document.getElementById(`searching-for`);
+            const pageContainer = document.createElement(`section`);
+            pageContainer.id = "pagination";
+            
+            const searchTitle = document.createElement(`section`);
+            searchTitle.id = "searching-for";
             searchTitle.innerHTML = `<h3>Searching for concerts with "${searchText}" as a ${searchType}</h3>`;
-            resultContainer.prepend(searchTitle, pageContainer);
+            
+            searchHeader.append(searchTitle, pageContainer);
+            resultContainer.prepend(searchHeader);
 
 
             // let pageContainer = document.getElementById("page-container");

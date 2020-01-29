@@ -34,3 +34,8 @@
 .concert-img img {
     width: 100%;
 }
+
+#search-header {
+    position: sticky;
+    top: 0;
+}
