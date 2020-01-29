@@ -1,6 +1,14 @@
 #search-results {
-    height: 350px;
+    height: 300px;
     padding: 20px;
     overflow-y: scroll;
     box-shadow: inset 0px 0px 5px 1px rgb(182, 181, 181);
+}
+
+#itinerary, #formSearch {
+    font-size: 20px;
+}
+
+#search-results section {
+    margin: 10px;
 }

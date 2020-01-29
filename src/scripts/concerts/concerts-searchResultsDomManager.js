@@ -5,14 +5,14 @@ const concertsDOMManager = {
         let addressLine1 = "address" in concert._embedded.venues[0] ? concert._embedded.venues[0].address.line1 : "No Address Listed";
 
         let concertHTML = `
-        <div id="concert-${i}">
+        <section id="concert-${i}">
             <p id="concert-name-${i}">${concert.name} @ ${concert._embedded.venues[0].name}</p>
             <p>${addressLine1} | ${concert._embedded.venues[0].city.name}, ${concert._embedded.venues[0].state.stateCode} ${concert._embedded.venues[0].postalCode}</p>
             <p style="font-size: 12px;">${note}</p>
             <p><a href="${concert.url}">Buy Tickets</a></p>
             <button type="submit" id="concert-btn-${i}">Save</button>
             <hr>
-        </div>
+        </section>
         `;
 
         return concertHTML;
