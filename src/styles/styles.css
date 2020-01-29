@@ -1,6 +1,6 @@
 #search-results {
     height: 300px;
-    padding: 20px;
+    /* padding: 20px; */
     overflow-y: scroll;
     box-shadow: inset 0px 0px 5px 1px rgb(182, 181, 181);
 }
@@ -35,7 +35,11 @@
     width: 100%;
 }
 
+
 #search-header {
+    display: flex;
     position: sticky;
     top: 0;
+    background-color: white;
 }
+
