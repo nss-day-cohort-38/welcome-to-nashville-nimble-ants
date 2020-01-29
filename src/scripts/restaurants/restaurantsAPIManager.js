@@ -1,5 +1,5 @@
-let loader = `<div class="boxLoading">Loading Searches...</div>`;
-document.getElementById("search-results").innerHTML = loader;
+/* let loader = `<div class="boxLoading">Loading Searches...</div>`;
+document.getElementById("search-results").innerHTML = loader; */
 
 document
   .getElementById("search-restaurants-btn")

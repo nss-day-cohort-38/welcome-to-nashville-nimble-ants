@@ -1,17 +1,17 @@
 const parksItin = document.getElementById("park__itin");
-const button = document.getElementById("park__saveBtn");
-const searchResults = document.getElementById("search-results");
+const park_save_button = document.getElementById("park__saveBtn");
+const parks_searchResults = document.getElementById("search-results");
 
 const parksItinSave = {
     addClickEventListener() {
-        button.addEventListener("click", () => {
+        park_save_button.addEventListener("click", () => {
             // console.log("SAVE CLICKED");
         });
 
     }
 }
 
-const reply_click = (event) => {
+const parks_reply_click = (event) => {
     // console.log(event.target.id);
     const saveItin = document.getElementById(`park__${event.target.id.split("__")[2]}`);
     if (saveItin !== null) {
@@ -24,4 +24,4 @@ const reply_click = (event) => {
     }
 }
 
-searchResults.addEventListener("click", reply_click);
+parks_searchResults.addEventListener("click", parks_reply_click);

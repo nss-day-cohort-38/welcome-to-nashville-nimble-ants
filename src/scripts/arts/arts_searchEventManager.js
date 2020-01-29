@@ -1,18 +1,19 @@
-const parks_searchEventManager = {
+const arts_searchEventManager = {
     addSearchClickEventListener() {
-        const button = document.getElementById("search-parks-btn");
+        const button = document.getElementById("search-arts-btn");
         // console.log(button);
         button.addEventListener("click", () => {
             // console.log("HELLO");
-            const option = document.getElementById("parkSelector");
+            const option = document.getElementById("artSelector");
             const searchCriteria = option.value;
-            const searchResultPromise = parks_apiManager.searchParks(searchCriteria);
+            // console.log(option.value);
+            const searchResultPromise = arts_apiManager.searchArts(searchCriteria);
             let loader = `
             <div class="boxLoading">Loading Searches...</div>`;
             document.getElementById('search-results').innerHTML = loader;
             searchResultPromise.then(searchResults => {
                 // console.log(searchResults);
-                parks_searchResultsDomManager.renderSearchResults(searchResults);
+                arts_searchResultsDomManager.renderSearchResults(searchResults);
             });
 
         });
