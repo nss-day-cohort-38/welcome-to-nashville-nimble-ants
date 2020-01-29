@@ -81,7 +81,7 @@ const searchEventManager = {
                     if ("_embedded" in data) {
                         concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
                     } else {
-                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "keyword", );
+                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "keyword");
                     }
                 });
             });
