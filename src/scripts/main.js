@@ -1,2 +1,3 @@
 parksHtmlToDom();
-parks_searchEventManager.addSearchClickEventListener();
+
+artsHtmlToDomFunction();

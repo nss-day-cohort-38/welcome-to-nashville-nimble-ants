@@ -1,15 +1,17 @@
-let num = 0;
+let parks_num = 0;
 
 const parks_searchResultsDomManager = {
     parksFactory(park) {
         const address = JSON.parse(park.mapped_location.human_address);
-        num++;
+        parks_num++;
         return `
-            <section id="park__${num}" class="park">
+        <div class="park_info">
+            <section id="park__${parks_num}" class="park">
                 <div class="park__name">${park.park_name}</div>
                 <div class="park__location">${address.address} ${address.city}, ${address.state} ${address.zip}</div>
-                <div id="park__saveBtn"><button id="park__saveBtn__${num}" class="btn save__${num}">Save</button></div>
+                <div id="park__saveBtn"><button id="park__saveBtn__${parks_num}" class="btn save__${parks_num}">Save</button></div>
             </section>
+    </div>
         `
     },
     renderSearchResults(searchResults) {
