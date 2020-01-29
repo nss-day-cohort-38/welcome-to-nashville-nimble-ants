@@ -3,7 +3,6 @@ const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=${userInput
 
 const renderComponents = restaurantData => {
   const userValue = document.getElementById("search-restaurants").value;
-    if (restaurantData) {
       // console.log(restaurantData); // array if objects with name and objects
       const filteredRestaurantList = restaurantData.filter(restaurant => {
         return restaurant.name === userValue;
@@ -20,7 +19,6 @@ const renderComponents = restaurantData => {
         createRestaurantComponent.renderRestaurant(component);
       });
     }
-  };
 
 //console.log(renderComponents());
 // between line 18 and 19 .... else {

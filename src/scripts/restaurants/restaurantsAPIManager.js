@@ -17,6 +17,8 @@ document
           };
         });
         renderComponents(restaurantData);
+        const restaurantSearchInput = document.getElementById("search-restaurants");
+        restaurantSearchInput.value = "";  // clears search box after we render the results aka the restaurant component
         //console.log(restaurantData); // the array drilled down to name and address
       });
     //.catch(err => {

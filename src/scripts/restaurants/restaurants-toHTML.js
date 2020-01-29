@@ -2,11 +2,10 @@ let number = 0;
 
 const createRestaurantComponent = {
   restaurantFactory({ name, address }) {
-    //const address = JSON.parse(park.mapped_location.human_address);
     number++;
     return `
       <section id="result-blocks-${number}">
-      <div id="restaurant-name">${name}</div>
+      <div id="${number}">${name}</div>
       <div>${address}</div>
       <button id="rest__saveBtn_${number}">Save</button></<button>
       </section>
