@@ -36,7 +36,7 @@ const parksOptionsArray = [
 const parksHtmlToDom = () => {
     let parks__HTML = `
     <div id="search__parks">
-    Search For Parks With:
+    <label for="search-parks">Search Parks</label>
     <select name="parkSelector" id="parkSelector">`
 
     for (const [keyID, valueID] of parksOptionsArray) {
@@ -49,6 +49,7 @@ const parksHtmlToDom = () => {
     </div >
     `
     parksHTML.innerHTML = parks__HTML;
+    parks_searchEventManager.addSearchClickEventListener();
 }
 
 
