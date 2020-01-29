@@ -37,22 +37,21 @@ const concertsDOMManager = {
             });
 
             i = 0;
-            
+
             const searchHeader = document.createElement(`section`);
             searchHeader.id = "search-header";
 
             const pageContainer = document.createElement(`section`);
             pageContainer.id = "pagination";
-            
+
             const searchTitle = document.createElement(`section`);
             searchTitle.id = "searching-for";
             searchTitle.innerHTML = `<h3>Searching for concerts with "${searchText}" as a ${searchType}</h3>`;
-            
+
             searchHeader.append(searchTitle, pageContainer);
             resultContainer.prepend(searchHeader);
 
 
-            // let pageContainer = document.getElementById("page-container");
             for (let j = 0; j < pages; j++) {
                 let pageButtonHTML = `<button type="submit" id="page-${j + 1}">${j + 1}</button>`;
                 pageContainer.innerHTML += pageButtonHTML;
@@ -64,12 +63,12 @@ const concertsDOMManager = {
 
 
             for (let j = 0; j < pages; j++) {
-                searchEventManager.addPagesButtonEvents(document.getElementById(`page-${j + 1}`), j, searchType);
+                concertEventManager.addPagesButtonEvents(document.getElementById(`page-${j + 1}`), j, searchType);
             }
 
             concerts.forEach(() => {
                 i++;
-                searchEventManager.addSaveButtonEvent(i);
+                concertEventManager.addSaveButtonEvent(i);
             });
 
         }
@@ -79,5 +78,20 @@ const concertsDOMManager = {
         const concertItinContainer = document.getElementById("concert__itin");
         concertItinContainer.innerHTML = `Concert: ${name}`;
 
+    },
+    renderSearch(searchForm) {
+        searchForm.innerHTML = `
+         <div>
+            <label for="search-concerts">Genres</label>
+            <input list="genre-options" type="list" id="search-concerts">
+            <datalist id="genre-options"></datalist>
+            <button type="submit" id="search-concerts-btn">Submit</button>
+        </div>
+        <div>
+            <label for="search-concerts-keyword">Keyword</label>
+            <input type="text" id="search-concerts-keyword">
+            <button type="submit" id="search-concerts-keyword-btn">Submit</button>
+        </div>
+        `;
     }
 };

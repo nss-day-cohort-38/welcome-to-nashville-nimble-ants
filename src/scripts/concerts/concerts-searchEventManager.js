@@ -1,23 +1,31 @@
 let searchText;
 let genreId;
-
-const searchEventManager = {
+const concertEventManager = {
+    navbarEvent() {
+        document.getElementById("search-link").addEventListener("click", () => {
+            const searchForm = document.getElementById("formSearch");
+            searchForm.innerHTML = "";
+            concertsDOMManager.renderSearch(searchForm);
+            genreFunction();
+            this.addKeywordButtonEvent();
+        });
+    },
     addButtonEventListener(genreObj) {
         const concertBtn = document.getElementById("search-concerts-btn");
         concertBtn.addEventListener("click", () => {
-            
+
             const input = document.getElementById("search-concerts");
             searchText = input.value;
             let isGenre = true;
             isGenre = validateData.validateGenre(searchText, genreObj);
             let isEmpty = validateData.isEmpty(searchText);
-            if (isEmpty){
+            if (isEmpty) {
                 alert("Input is empty!")
             } else if (isGenre) {
                 genreId = getId.getGenreId(searchText, genreObj);
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
                 document.getElementById('search-results').innerHTML = loader;
-                const concertResults = APIManager.searchConcertGenre(genreId);
+                const concertResults = APIManager.searchConcert(genreId, "genre", "&genreId=", 0);
                 concertResults.then(data => {
                     if ("_embedded" in data) {
                         concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText);
@@ -33,19 +41,19 @@ const searchEventManager = {
         });
 
     },
-    addEnterEvent(id){
+    addEnterEvent(id) {
         const input = document.getElementById(`search-${id}`);
         // const keywordButton = document.getElementById("search-concerts-keyword-btn");
-        
-        input.addEventListener("keyup", function(event) {
+
+        input.addEventListener("keyup", function (event) {
             // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {
-              // Cancel the default action, if needed
-            //   event.preventDefault();
-              // Trigger the button element with a click
-              document.getElementById(`search-${id}-btn`).click();
+                // Cancel the default action, if needed
+                //   event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById(`search-${id}-btn`).click();
             }
-          });
+        });
 
     },
     addSaveButtonEvent(id) {
@@ -57,15 +65,16 @@ const searchEventManager = {
     addKeywordButtonEvent() {
         const concertKeyBtn = document.getElementById("search-concerts-keyword-btn");
         concertKeyBtn.addEventListener("click", () => {
+
             const input = document.getElementById("search-concerts-keyword");
             searchText = input.value;
             let isEmpty = validateData.isEmpty(searchText);
-            if (isEmpty){
+            if (isEmpty) {
                 alert("Input is empty!");
             } else {
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
-                    document.getElementById('search-results').innerHTML = loader;
-                const concertResults = APIManager.searchConcertKeyword(searchText);
+                document.getElementById('search-results').innerHTML = loader;
+                const concertResults = APIManager.searchConcert(searchText, "keyword", "&keyword=", 0);
                 concertResults.then(data => {
                     if ("_embedded" in data) {
                         concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
@@ -86,7 +95,7 @@ const searchEventManager = {
                 const currentID = `${e.target.id}`;
                 // document.getElementById(`${currentID}`).style.backgroundColor = "red";
                 console.log(document.getElementById("page-10"));
-                let genrePromise = APIManager.searchConcertGenrePage(genreId, j);
+                let genrePromise = APIManager.searchConcert(genreId, "genre", "&genreId=", j);
                 genrePromise.then(data => {
                     if ("_embedded" in data) {
                         concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText, currentID);
@@ -99,7 +108,7 @@ const searchEventManager = {
             buttonNode.addEventListener("click", () => {
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
                 document.getElementById('search-results').innerHTML = loader;
-                let keywordPromise = APIManager.searchConcertKeywordPage(searchText, j);
+                let keywordPromise = APIManager.searchConcert(searchText, "keyword", "&keyword=", j);
                 keywordPromise.then(data => {
                     if ("_embedded" in data) {
                         concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
@@ -109,9 +118,10 @@ const searchEventManager = {
                 });
             });
         }
-    }
+    },
 };
-searchEventManager.addEnterEvent("concerts");
-searchEventManager.addEnterEvent("concerts-keyword");
+concertEventManager.addEnterEvent("concerts");
+concertEventManager.addEnterEvent("concerts-keyword");
 
-searchEventManager.addKeywordButtonEvent();
+concertEventManager.addKeywordButtonEvent();
+concertEventManager.navbarEvent();
