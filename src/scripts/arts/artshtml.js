@@ -28,7 +28,7 @@ const artsHtmlToDomFunction = () => {
         // console.log(artsOptionsArray);
         artsFilteredOptionsArray = Array.from(new Set(artsOptionsArray));
         artsFilteredOptionsArray.sort();
-        console.log(artsFilteredOptionsArray);
+        // console.log(artsFilteredOptionsArray);
         artsHtmlToDom();
         arts_searchEventManager.addSearchClickEventListener();
     })

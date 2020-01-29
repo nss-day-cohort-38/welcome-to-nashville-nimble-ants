@@ -1,7 +1,7 @@
 const parks_searchEventManager = {
     addSearchClickEventListener() {
         const button = document.getElementById("search-parks-btn");
-        console.log(button);
+        // console.log(button);
         button.addEventListener("click", () => {
             // console.log("HELLO");
             const option = document.getElementById("parkSelector");
