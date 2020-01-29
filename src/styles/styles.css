@@ -1,0 +1,6 @@
+#search-results {
+    height: 350px;
+    padding: 20px;
+    overflow-y: scroll;
+    box-shadow: inset 0px 0px 5px 1px rgb(182, 181, 181);
+}
