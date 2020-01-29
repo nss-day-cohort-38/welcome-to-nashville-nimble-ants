@@ -3,7 +3,7 @@ let number = 0;
 const createRestaurantComponent = {
   restaurantFactory({ name, address }) {
     //const address = JSON.parse(park.mapped_location.human_address);
-    num++;
+    number++;
     return `
       <section id="result-blocks-${number}">
       <div id="restaurant-name">${name}</div>

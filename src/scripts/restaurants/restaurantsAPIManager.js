@@ -9,7 +9,7 @@ document
       .then(response => response.json())
       .then(restaurants => {
         const restaurantList = restaurants.restaurants;
-        //console.log(restaurantList);
+        // console.log(restaurantList);
         const restaurantData = restaurantList.map(({ restaurant }) => {
           return {
             name: restaurant.name,

@@ -3,25 +3,24 @@ const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=${userInput
 
 const renderComponents = restaurantData => {
   const userValue = document.getElementById("search-restaurants").value;
-  //console.log(restaurantData);  // array if objects with name and objects
-  const filteredRestaurantList = restaurantData.filter(restaurant => {
-    console.log(restaurant);
-    return restaurant.name === userValue;
-  });
-  // console.log(filteredRestaurantList);  // filters out by the search of restaurant name
+    if (restaurantData) {
+      // console.log(restaurantData); // array if objects with name and objects
+      const filteredRestaurantList = restaurantData.filter(restaurant => {
+        return restaurant.name === userValue;
+      });
 
-  let restaurantDataComponents = [];
-  filteredRestaurantList.forEach(restaurant => {
-    restaurantDataComponents.push(createRestaurantComponent.restaurantFactory(restaurant)
-    );
-  });
-  //console.log(restaurantDataComponents); // each of the divs
-  restaurantDataComponents.forEach(component => {
-    createRestaurantComponent.renderRestaurant(component);
-  });
-};
-console.log(renderComponents());
-
+      let restaurantDataComponents = [];
+      filteredRestaurantList.forEach(restaurant => {
+        restaurantDataComponents.push(
+          createRestaurantComponent.restaurantFactory(restaurant)
+        );
+      });
+      //console.log(restaurantDataComponents); // each of the divs
+      restaurantDataComponents.forEach(component => {
+        createRestaurantComponent.renderRestaurant(component);
+      });
+    }
+  };
 
 //console.log(renderComponents());
 // between line 18 and 19 .... else {
