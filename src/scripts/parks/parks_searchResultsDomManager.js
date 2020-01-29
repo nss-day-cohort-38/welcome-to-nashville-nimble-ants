@@ -11,7 +11,7 @@ const parks_searchResultsDomManager = {
                 <div class="park__location">${address.address} ${address.city}, ${address.state} ${address.zip}</div>
                 <div id="park__saveBtn"><button id="park__saveBtn__${parks_num}" class="btn save__${parks_num}">Save</button></div>
             </section>
-        </div>
+    </div>
         `
     },
     renderSearchResults(searchResults) {

@@ -1,5 +1,7 @@
 let arts_num = 0;
 
+let artsOptionsArray = [];
+
 const arts_searchResultsDomManager = {
     artsFactory(art) {
         arts_num++;
@@ -18,6 +20,11 @@ const arts_searchResultsDomManager = {
         container.innerHTML = "";
         searchResults.forEach(art => {
             container.innerHTML += this.artsFactory(art);
+        })
+    },
+    parseLocationResults(searchResults) {
+        searchResults.forEach(art => {
+            artsOptionsArray.push(art.location);
         })
     }
 };

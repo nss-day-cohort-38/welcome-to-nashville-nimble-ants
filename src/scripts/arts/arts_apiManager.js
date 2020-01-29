@@ -7,3 +7,11 @@ const arts_apiManager = {
         return fetch(url).then(resp => resp.json());
     }
 };
+
+const arts_api_locations_Manager = {
+    searchArts() {
+        // console.log(searchCriteria);
+        const url = arts_apiBaseUrl;
+        return fetch(url).then(resp => resp.json());
+    }
+};
