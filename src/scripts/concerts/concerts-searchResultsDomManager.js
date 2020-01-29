@@ -4,6 +4,7 @@ const concertsDOMManager = {
         // const note = noteProp in concert ? concert.pleaseNote : "";
         let addressLine1 = "address" in concert._embedded.venues[0] ? concert._embedded.venues[0].address.line1 : "No Address Listed";
 
+
         let concertHTML = `
         <section id="concert-${i}" class="concert">
             <div class="concert-text">
@@ -40,8 +41,7 @@ const concertsDOMManager = {
             const pageContainer = document.createElement(`div`);
             pageContainer.id = "page-container";
 
-            const searchTitle = document.createElement(`div`);
-            searchTitle.id = "search-title";
+            const searchTitle = document.getElementById(`searching-for`);
             searchTitle.innerHTML = `<h3>Searching for concerts with "${searchText}" as a ${searchType}</h3>`;
             resultContainer.prepend(searchTitle, pageContainer);
 
