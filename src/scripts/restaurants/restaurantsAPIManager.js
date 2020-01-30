@@ -1,5 +1,7 @@
+const restaurantKey = "c460f1e9d15428b644335618a7e14819";
+
 const cuisinesURL =
-  "https://developers.zomato.com/api/v2.1/cuisines?city_id=1138&apikey=c460f1e9d15428b644335618a7e14819";
+  `https://developers.zomato.com/api/v2.1/cuisines?city_id=1138&apikey=${restaurantKey}`;
 fetch(cuisinesURL)
   .then(response => response.json())
   .then(cuisines => {
@@ -29,7 +31,9 @@ document
   .getElementById("search-restaurants-btn")
   .addEventListener("click", () => {
     const cuisine = document.getElementById("cuisineSelect").value;
-    const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=1138&cuisines=${cuisine}&entity_type=city&apikey=c460f1e9d15428b644335618a7e14819`;
+    const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=1138&cuisines=${cuisine}&entity_type=city&apikey=${restaurantKey}`;
+    let loader = `<div class="boxLoading">Loading Searches...</div>`;
+    document.getElementById("search-results").innerHTML = loader;
     fetch(URL)
       .then(response => response.json())
       .then(restaurants => {
@@ -43,12 +47,12 @@ document
             address: restaurant.location.address
           };
         });
-        renderComponents(restaurantData);
-
+        //renderComponents(restaurantData);
         const restaurantSearchInput = document.getElementById(
           "search-restaurants"
         );
-        restaurantSearchInput.value = ""; // clears search box after we render the results aka the restaurant component
+        restaurantSearchInput.value = "";
+       // clears search box after we render the results aka the restaurant component
         console.log(restaurantData); // the array drilled down to name and address and cuisine
       });
   });
