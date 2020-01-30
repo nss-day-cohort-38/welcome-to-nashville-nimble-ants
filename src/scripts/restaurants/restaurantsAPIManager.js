@@ -1,5 +1,3 @@
-const restaurantKey = "c460f1e9d15428b644335618a7e14819";
-
 const cuisinesURL =
   `https://developers.zomato.com/api/v2.1/cuisines?city_id=1138&apikey=${restaurantKey}`;
 fetch(cuisinesURL)
