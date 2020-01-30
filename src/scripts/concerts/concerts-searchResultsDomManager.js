@@ -93,10 +93,10 @@ const concertsDOMManager = {
         </div>
         `;
     },
-    renderDropDown(navbarSearch, nameArray, category) {
-
-        const dropHTML = document.createElement("section");
-        dropHTML.innerHTML = `
+    renderDropDown(navbarDrop, nameArray, category) {
+console.log(navbarDrop);
+        // const dropHTML = document.createElement("section");
+        navbarDrop.innerHTML = `
         <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:azure">
@@ -106,7 +106,7 @@ const concertsDOMManager = {
         </div>
     </div>
         `;
-        navbarSearch.prepend(dropHTML);
+        // navbarSearch.prepend(dropHTML);
 
         const dropOptions = document.getElementById("drop-options");
 

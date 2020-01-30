@@ -8,14 +8,14 @@ const concertEventManager = {
     navbarEvent(category, needsDropdown) {
         document.getElementById(`search-${category}-link`).addEventListener("click", () => {
             const searchForm = document.getElementById("formSearch");
-            const navbarSearch = document.getElementById("navbar-search");
+            const navbarDrop= document.getElementById("search-drop");
             
             searchForm.innerHTML = "";
             document.getElementById("search-results").innerHTML = "";
             // concertsDOMManager.renderSearch(searchForm);
             const nameArray = ["Genres", "Keyword"];
             if (needsDropdown) {
-                concertsDOMManager.renderDropDown(navbarSearch, nameArray, "concerts");
+                concertsDOMManager.renderDropDown(navbarDrop, nameArray, "concerts");
             }
             
             // getGenreInformation.getGenreList();
