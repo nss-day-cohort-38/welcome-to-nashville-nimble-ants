@@ -38,8 +38,11 @@ const concertsDOMManager = {
 
             i = 0;
 
-            const searchHeader = document.createElement(`section`);
-            searchHeader.id = "search-header";
+            // const searchHeader = document.createElement(`section`);
+            // searchHeader.id = "search-header";
+
+            const searchHeader = document.getElementById("search-header");
+            searchHeader.innerHTML = "";
 
             const pageContainer = document.createElement(`section`);
             pageContainer.id = "pagination";
@@ -48,8 +51,9 @@ const concertsDOMManager = {
             searchTitle.id = "searching-for";
             searchTitle.innerHTML = `<h3>Searching for concerts with "${searchText}" as a ${searchType}</h3>`;
 
-            searchHeader.append(searchTitle, pageContainer);
-            resultContainer.prepend(searchHeader);
+            // searchHeader.append(searchTitle, pageContainer);
+            searchHeader.appendChild(searchTitle);
+            searchHeader.appendChild(pageContainer);
 
 
             for (let j = 0; j < pages; j++) {
