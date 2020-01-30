@@ -9,7 +9,7 @@ const renderComponents = restaurantData => {
       createRestaurantComponent.restaurantFactory(restaurant)
     )
   });
-  console.log(restaurantDataComponents); // each of the divs components
+  // console.log(restaurantDataComponents); // each of the divs components
   restaurantDataComponents.forEach(component => {
     createRestaurantComponent.renderRestaurant(component);
   });

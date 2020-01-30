@@ -1,5 +1,4 @@
-const cuisinesURL =
-  `https://developers.zomato.com/api/v2.1/cuisines?city_id=1138&apikey=${restaurantKey}`;
+const cuisinesURL = `https://developers.zomato.com/api/v2.1/cuisines?city_id=1138&apikey=${restaurantKey}`;
 fetch(cuisinesURL)
   .then(response => response.json())
   .then(cuisines => {
@@ -51,8 +50,7 @@ document
           "search-restaurants"
         );
         restaurantSearchInput.value = "";
-       // clears search box after we render the results aka the restaurant component
-        console.log(restaurantData); // the array drilled down to name and address and cuisine
+        // clears search box after we render the results aka the restaurant component
       });
   });
 //.catch(err => {
