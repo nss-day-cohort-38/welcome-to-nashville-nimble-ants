@@ -13,7 +13,7 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark" style="background-color: #20B2AA;">
-        <a class="navbar-brand" href="#">Welcome to Nashville</a>
+        <a class="navbar-brand" href="#" id="welcome">Welcome to Nashville</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
             aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,22 +22,26 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="search-concerts-link">Search Concerts <span
+                    <a class="nav-link" href="#" id="search-concerts-link">Concerts <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="search-parks-link">Link</a>
+                    <a class="nav-link" href="#" id="view-itineraries-link">View Itineraries</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="search-restaurants-link">Link</a>
+                    <a class="nav-link" href="#" id="search-parks-link">Parks</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="search-arts-link">Link</a>
+                    <a class="nav-link" href="#" id="search-restaurants-link">Restaurants</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="search-arts-link">Arts</a>
                 </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0" id="navbar-search">
                 <div id="search-drop">
+                    
                 </div>
                 <div id="search-input">
                 </div>
@@ -71,7 +75,7 @@
 
     </div>
     
-    <h2>Search Results</h2>
+    <h2 id="search-result-title">Search Results</h2>
 
     <section id="search-results">
         <!-- 
@@ -85,15 +89,18 @@
 
     </section>
 
-    <h2>Itinerary</h2>
+    <h2 id="itinerary-title">Itinerary</h2>
     <section id="itinerary">
         <div id="park__itin">Park: No park saved in itinerary</div>
         <div id="concert__itin">Concert: No concert saved in itinerary</div>
         <div id="restaurant__itin">Restaurant: No restaurant saved in itinerary</div>
         <div id="arts__itin">Arts: No arts event saved in itinerary</div>
+        <button type="submit" id="itinerary-btn"> Save Itinerary</button>
 
     </section>
+    <section id="all-itineraries">
 
+    </section>
     <footer></footer>
     <!-- Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -143,6 +150,9 @@
     <script src="./scripts/parks/parksitin.js"></script>
     <!-- END PARKS API SCRIPTS -->
 
+    <script src="./scripts/DOMManager.js"></script>
+    <script src="./scripts/eventManager.js"></script>
+    <script src="./scripts/api-manager.js"></script>
     <script src="./scripts/main.js"></script>
 </body>
 

@@ -7,26 +7,28 @@ const concertEventManager = {
     // Adds event to search-link navbar link
     navbarEvent(category, needsDropdown) {
         document.getElementById(`search-${category}-link`).addEventListener("click", () => {
-            const searchForm = document.getElementById("formSearch");
-            const navbarDrop= document.getElementById("search-drop");
-            
-            searchForm.innerHTML = "";
+            const searchForm = document.getElementById("formSearch").classList.add("hidden");
+            const navbarDrop = document.getElementById("search-drop");
+
+            // searchForm.innerHTML = "";
             document.getElementById("search-results").innerHTML = "";
             const nameArray = ["Genres", "Keyword"];
             if (needsDropdown) {
                 concertsDOMManager.renderDropDown(navbarDrop, nameArray, "concerts");
             }
+
+            DOMManager.untoggleItenreary();
         });
     },
-    dropEvent(id) {        
+    dropEvent(id) {
         document.getElementById(id).addEventListener("click", () => {
             const searchInput = document.getElementById("search-input");
             searchInput.innerHTML = concertsDOMManager.renderSearchInput(id);
-            if(id == "concerts-genres-option"){
+            if (id == "concerts-genres-option") {
                 this.addEnterEvent("concerts");
                 getGenreInformation.getGenreList();
             } else {
-                
+
                 this.addEnterEvent("concerts-keyword");
                 this.addKeywordButtonEvent();
             }
@@ -138,4 +140,11 @@ const concertEventManager = {
             }
         });
     },
+    welcomeNashvilleEvent() {
+        document.getElementById("welcome").addEventListener("click", () => {
+            document.getElementById("formSearch").classList.remove("hidden");
+        });
+    }
 };
+
+concertEventManager.welcomeNashvilleEvent()

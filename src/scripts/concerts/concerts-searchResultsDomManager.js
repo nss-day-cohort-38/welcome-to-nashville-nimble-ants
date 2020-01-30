@@ -80,7 +80,6 @@ const concertsDOMManager = {
     renderItinerary(name) {
         const concertItinContainer = document.getElementById("concert__itin");
         concertItinContainer.innerHTML = `Concert: ${name}`;
-
     },
     renderSearch(searchForm) {
         searchForm.innerHTML = `
@@ -98,13 +97,12 @@ const concertsDOMManager = {
         `;
     },
     renderDropDown(navbarDrop, nameArray, category) {
-console.log(navbarDrop);
         // const dropHTML = document.createElement("section");
         navbarDrop.innerHTML = `
         <div class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:azure">
-            Dropdown link
+            Pick Search Parameter
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="drop-options">
         </div>
@@ -121,12 +119,10 @@ console.log(navbarDrop);
             idArray.push(id);
             dropOptions.innerHTML +=
                 `<a class="dropdown-item" id="${id}">${element}</a>`;
-            console.log(element);
 
 
         });
 
-        console.log(idArray);
 
         idArray.forEach(element => {
             concertEventManager.dropEvent(element);
@@ -150,6 +146,5 @@ console.log(navbarDrop);
             `
         }
 
-        console.log("here");
     }
 };
