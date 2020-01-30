@@ -9,7 +9,7 @@ const parks_searchResultsDomManager = {
             <section id="park__${parks_num}" class="park">
                 <div class="park__name">${park.park_name}</div>
                 <div class="park__location">${address.address} ${address.city}, ${address.state} ${address.zip}</div>
-                <div id="park__saveBtn"><button id="park__saveBtn__${parks_num}" class="btn save__${parks_num}">Save</button></div>
+                <div id="park__saveBtn"><button type="submit" id="park__saveBtn__${parks_num}" class="btn save__${parks_num}">Save</button></div>
             </section>
     </div>
         `
