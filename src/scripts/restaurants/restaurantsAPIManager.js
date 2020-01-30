@@ -47,7 +47,8 @@ document
             address: restaurant.location.address
           };
         });
-        //renderComponents(restaurantData);
+        renderComponents(restaurantData);
+
         const restaurantSearchInput = document.getElementById(
           "search-restaurants"
         );

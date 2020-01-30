@@ -14,19 +14,20 @@ const createRestaurantComponent = {
   },
   renderRestaurant(restaurantHTML) {
     const container = document.getElementById("search-results");
-    container.innerHTML = "";
+    container.innerHTML += restaurantHTML;
+  }
+};
+
+
+
+/*
     for (const prop in restaurantHTML) {
       //console.log(prop);
       console.log(restaurantHTML[prop]);
       createRestaurantComponent.restaurantFactory(restaurantHTML[prop])
       restaurantDataComponents.forEach(component => {
         createRestaurantComponent.renderRestaurant(component);
-    })
-  };
-
-    
-
-
+  */
 
 /*
     for (const prop in restaurantHTML) {

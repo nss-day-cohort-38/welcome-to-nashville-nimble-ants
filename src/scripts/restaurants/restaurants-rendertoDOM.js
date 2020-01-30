@@ -7,15 +7,10 @@ const renderComponents = restaurantData => {
   restaurantData.forEach(restaurant => {
     restaurantDataComponents.push(
       createRestaurantComponent.restaurantFactory(restaurant)
-    ));
-  // console.log(restaurantDataComponents); // each of the divs components
+    )
+  });
+  console.log(restaurantDataComponents); // each of the divs components
   restaurantDataComponents.forEach(component => {
     createRestaurantComponent.renderRestaurant(component);
   });
 };
-
-//console.log(renderComponents());
-// between line 18 and 19 .... else {
-//const searchResultsContainer = document.getElementById("search-results");
-//searchResultsContainer.innerHTML = "No Restaurants Found";
-//};
