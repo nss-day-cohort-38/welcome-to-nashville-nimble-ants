@@ -5,9 +5,7 @@ const makeOptions = {
         genresObj.forEach(element => {
             genreOptions.innerHTML += `<option value="${element.name}">`;
         });
-        searchEventManager.addButtonEventListener(genresObj);
-        
-
+        concertEventManager.addButtonEventListener(genresObj);
     }
 }
 
