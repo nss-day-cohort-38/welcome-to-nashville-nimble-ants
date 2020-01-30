@@ -21,9 +21,9 @@
                 <button type="submit" id="search-parks-btn">Submit</button>
             </div>
 
-            <div>
+            <div id="search-restaurants">
                 <label for="search-restaurants">Search Restaurants</label>
-                <input type="text" id="search-restaurants">
+                <!-- <input type="text" id="search-restaurants"> -->
                 <button type="submit" id="search-restaurants-btn">Submit</button>
             </div>
 
@@ -65,18 +65,18 @@
     </section>
 
     <footer></footer>
+    <script src="../api/apiKeys.js"></script>
 
-    </button>
     <!--Restaurant API Scripts -->
-    <script src="scripts/restaurants/restaurants-toHTML.js"></script>
     <script src="scripts/restaurants/restaurants-rendertoDOM.js"></script>
-    <script src="scripts/restaurants/restaurants-addToItinerary.js"></script>
+    <script src="scripts/restaurants/restaurants-toHTML.js"></script>
     <script src="scripts/restaurants/restaurantsAPIManager.js"></script>
- 
+    <script src="scripts/restaurants/restaurants-addToItinerary.js"></script>
+
+
     <!-- PARKS API SCRIPTS -->
 
 
-    <script src="../api/apiKeys.js"></script>
 
     <!-- Concert Scripts -->
     <script src="scripts/concerts/concert-genres.js"></script>
@@ -105,6 +105,7 @@
     <!-- END PARKS API SCRIPTS -->
 
     <script src="./scripts/main.js"></script>
+
 </body>
 
 </html>
