@@ -9,5 +9,11 @@ const APIManager = {
                 alert("searchConcert " + error);
                 document.getElementById('search-results').innerHTML = `Sorry, our concert ${category} search is currently down. Try our other searches.`;
             });
+    },
+    fetchGenreList() {
+        return fetch("https://app.ticketmaster.com/discovery/v2/classifications/segments/KZFzniwnSyZfZ7v7nJ.json?id=KnvZfZ7vAv6&apikey=ArKbxIOYorCETHOefzvorroVnAxnWCtG")
+            .then(results => results.json())
+            .catch((error) => alert("genresObjPromise " + error));
     }
 };
+

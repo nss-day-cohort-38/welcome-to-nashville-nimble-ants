@@ -1,6 +1,6 @@
 const concertsDOMManager = {
     resultHTML(concert, i) {
-        const noteProp = "pleaseNote";
+        // const noteProp = "pleaseNote";
         // const note = noteProp in concert ? concert.pleaseNote : "";
         let addressLine1 = "address" in concert._embedded.venues[0] ? concert._embedded.venues[0].address.line1 : "No Address Listed";
 
@@ -61,7 +61,6 @@ const concertsDOMManager = {
                 }
             }
 
-
             for (let j = 0; j < pages; j++) {
                 concertEventManager.addPagesButtonEvents(document.getElementById(`page-${j + 1}`), j, searchType);
             }
@@ -93,5 +92,60 @@ const concertsDOMManager = {
             <button type="submit" id="search-concerts-keyword-btn">Submit</button>
         </div>
         `;
+    },
+    renderDropDown(navbarSearch, nameArray, category) {
+
+        const dropHTML = document.createElement("section");
+        dropHTML.innerHTML = `
+        <div class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:azure">
+            Dropdown link
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="drop-options">
+        </div>
+    </div>
+        `;
+        navbarSearch.prepend(dropHTML);
+
+        const dropOptions = document.getElementById("drop-options");
+
+        let idArray = [];
+
+        nameArray.forEach(element => {
+            const id = `${category}-${element.toLowerCase()}-option`;
+            idArray.push(id);
+            dropOptions.innerHTML +=
+                `<a class="dropdown-item" id="${id}">${element}</a>`;
+            console.log(element);
+
+
+        });
+
+        console.log(idArray);
+
+        idArray.forEach(element => {
+            concertEventManager.dropEvent(element);
+            // console.log(document.getElementById(`${element}`));
+
+
+        })
+
+    },
+    renderSearchInput(id) {
+        if (id == "concerts-genres-option") {
+            return `
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Genres" list="genre-options" id="search-concerts">
+                <datalist id="genre-options"></datalist>
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="search-concerts-btn">Search</button>
+            `
+        } else if (id == "concerts-keyword-option") {
+            return `
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Keyword" id="search-concerts-keyword">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="search-concerts-keyword-btn">Search</button>
+            `
+        }
+
+        console.log("here");
     }
 };

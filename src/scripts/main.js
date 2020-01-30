@@ -1,4 +1,4 @@
-
+concertEventManager.runIt();
 
 parksHtmlToDom();
 

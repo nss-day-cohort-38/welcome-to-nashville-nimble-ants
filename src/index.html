@@ -22,22 +22,22 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" id="search-link">Search Concerts <span
+                    <a class="nav-link" href="#" id="search-concerts-link">Search Concerts <span
                             class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#" id="search-parks-link">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#" id="search-restaurants-link">Link</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#" id="search-arts-link">Link</a>
                 </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <div class="nav-item dropdown">
+            <form class="form-inline my-2 my-lg-0" id="navbar-search">
+                <!-- <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:azure">
                         Dropdown link
@@ -47,10 +47,12 @@
                         <a class="dropdown-item" href="#">Another action</a>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
-                </div>
+                </div> -->
+                <div id="search-input">
 
-                <input class="form-control mr-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                    <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button> -->
+                </div>
             </form>
         </div>
     </nav>
@@ -69,17 +71,21 @@
             </div>
 
 
-            <div>
+            <!-- <div>
                 <label for="search-concerts">Search Concerts Genres</label>
-                <input list="genre-options" type="list" id="search-concerts">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Genres" list="genre-options" id="search-concerts">
                 <datalist id="genre-options"></datalist>
-                <button type="submit" id="search-concerts-btn">Submit</button>
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="search-concerts-btn">Search</button>
             </div>
+
+            <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+
             <div>
                 <label for="search-concerts-keyword">Search Concerts Keyword</label>
-                <input type="text" id="search-concerts-keyword">
-                <button type="submit" id="search-concerts-keyword-btn">Submit</button>
-            </div>
+                <input class="form-control mr-sm-2" type="search" placeholder="Search Keyword" id="search-concerts-keyword">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit" id="search-concerts-keyword-btn">Search</button>
+            </div> -->
 
 
             <div id="search-arts">
@@ -139,13 +145,12 @@
     <script src="../api/apiKeys.js"></script>
 
     <!-- Concert Scripts -->
+    <script src="scripts/concerts/concert-apiManager.js"></script>
     <script src="scripts/concerts/concert-genres.js"></script>
     <script src="scripts/concerts/concerts-searchEventManager.js"></script>
     <script src="scripts/concerts/concert-validate-input.js"></script>
     <script src="scripts/concerts/concerts-searchResultsDomManager.js"></script>
     <script src="scripts/concerts/concert-make-genre-options.js"></script>
-    <script src="scripts/concerts/concert-get-genre-id.js"></script>
-    <script src="scripts/concerts/concert-apiManager.js"></script>
 
     <!-- ARTS API SCRIPTS -->
     <script src="./scripts/arts/arts_apiManager.js"></script>

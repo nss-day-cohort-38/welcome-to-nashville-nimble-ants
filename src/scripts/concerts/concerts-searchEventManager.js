@@ -1,15 +1,43 @@
 let searchText;
 let genreId;
 const concertEventManager = {
-    navbarEvent() {
-        document.getElementById("search-link").addEventListener("click", () => {
+    runIt() {
+        this.navbarEvent("concerts", true);
+    },
+    // Adds event to search-link navbar link
+    navbarEvent(category, needsDropdown) {
+        document.getElementById(`search-${category}-link`).addEventListener("click", () => {
             const searchForm = document.getElementById("formSearch");
+            const navbarSearch = document.getElementById("navbar-search");
+            
             searchForm.innerHTML = "";
-            concertsDOMManager.renderSearch(searchForm);
-            genreFunction();
-            this.addKeywordButtonEvent();
+            document.getElementById("search-results").innerHTML = "";
+            // concertsDOMManager.renderSearch(searchForm);
+            const nameArray = ["Genres", "Keyword"];
+            if (needsDropdown) {
+                concertsDOMManager.renderDropDown(navbarSearch, nameArray, "concerts");
+            }
+            
+            // getGenreInformation.getGenreList();
+            // this.addKeywordButtonEvent();
         });
     },
+    dropEvent(id) {        
+        document.getElementById(id).addEventListener("click", () => {
+            const searchInput = document.getElementById("search-input");
+            searchInput.innerHTML = concertsDOMManager.renderSearchInput(id);
+            if(id == "concerts-genres-option"){
+                this.addEnterEvent("concerts");
+                getGenreInformation.getGenreList();
+            } else {
+                
+                this.addEnterEvent("concerts-keyword");
+                this.addKeywordButtonEvent();
+            }
+            this.runIt();
+        });
+    },
+    // Adds event to genre search button
     addButtonEventListener(genreObj) {
         const concertBtn = document.getElementById("search-concerts-btn");
         concertBtn.addEventListener("click", () => {
@@ -22,13 +50,14 @@ const concertEventManager = {
             if (isEmpty) {
                 alert("Input is empty!")
             } else if (isGenre) {
-                genreId = getId.getGenreId(searchText, genreObj);
+                const category = "genre";
+                genreId = getGenreInformation.getGenreId(searchText, genreObj);
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
                 document.getElementById('search-results').innerHTML = loader;
-                const concertResults = APIManager.searchConcert(genreId, "genre", "&genreId=", 0);
+                const concertResults = APIManager.searchConcert(genreId, category, "&genreId=", 0);
                 concertResults.then(data => {
                     if ("_embedded" in data) {
-                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText);
+                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, category, searchText);
 
                     } else {
                         concertsDOMManager.renderResults(`There are no concerts of the genre "${searchText}" at this time`);
@@ -41,35 +70,32 @@ const concertEventManager = {
         });
 
     },
+    // Has enter key submit concert searches individually
     addEnterEvent(id) {
         const input = document.getElementById(`search-${id}`);
-        // const keywordButton = document.getElementById("search-concerts-keyword-btn");
 
         input.addEventListener("keyup", function (event) {
-            // Number 13 is the "Enter" key on the keyboard
             if (event.keyCode === 13) {
-                // Cancel the default action, if needed
-                //   event.preventDefault();
-                // Trigger the button element with a click
                 document.getElementById(`search-${id}-btn`).click();
             }
         });
 
     },
+    // Adds event to Save Button individually
     addSaveButtonEvent(id) {
         const saveButtons = document.getElementById(`concert-btn-${id}`);
         saveButtons.addEventListener("click", () => {
             concertsDOMManager.renderItinerary(document.getElementById(`concert-name-${id}`).innerHTML);
         });
     },
+    // Adds event to keyword search button
     addKeywordButtonEvent() {
         const concertKeyBtn = document.getElementById("search-concerts-keyword-btn");
         concertKeyBtn.addEventListener("click", () => {
 
             const input = document.getElementById("search-concerts-keyword");
             searchText = input.value;
-            let isEmpty = validateData.isEmpty(searchText);
-            if (isEmpty) {
+            if (validateData.isEmpty(searchText)) {
                 alert("Input is empty!");
             } else {
                 let loader = `<div class="boxLoading">Loading Searches...</div>`;
@@ -87,41 +113,33 @@ const concertEventManager = {
         });
 
     },
+    // Adds Events to Page buttons individually
     addPagesButtonEvents(buttonNode, j, topic) {
-        if (topic == "genre") {
-            buttonNode.addEventListener("click", (e) => {
-                let loader = `<div class="boxLoading">Loading Searches...</div>`;
-                document.getElementById('search-results').innerHTML = loader;
-                const currentID = `${e.target.id}`;
-                // document.getElementById(`${currentID}`).style.backgroundColor = "red";
-                console.log(document.getElementById("page-10"));
-                let genrePromise = APIManager.searchConcert(genreId, "genre", "&genreId=", j);
-                genrePromise.then(data => {
-                    if ("_embedded" in data) {
-                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "genre", searchText, currentID);
-                    } else {
-                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "genre");
-                    }
-                });
-            });
-        } else if (topic == "keyword") {
-            buttonNode.addEventListener("click", () => {
-                let loader = `<div class="boxLoading">Loading Searches...</div>`;
-                document.getElementById('search-results').innerHTML = loader;
-                let keywordPromise = APIManager.searchConcert(searchText, "keyword", "&keyword=", j);
-                keywordPromise.then(data => {
-                    if ("_embedded" in data) {
-                        concertsDOMManager.renderResults(data._embedded.events, data.page.totalPages, "keyword", searchText);
-                    } else {
-                        concertsDOMManager.renderResults("There are no concerts of this genre at this time", data.page.totalPages, "keyword");
-                    }
-                });
-            });
-        }
+        buttonNode.addEventListener("click", (e) => {
+            let loader = `<div class="boxLoading">Loading Searches...</div>`;
+            document.getElementById('search-results').innerHTML = loader;
+            const noGenreMess = "There are no concerts of this genre at this time";
+            if (topic == "genre") {
+                APIManager.searchConcert(genreId, "topic", `&${topic}Id=`, j)
+                    .then(data => {
+                        const totalPages = data.page.totalPages;
+                        if ("_embedded" in data) {
+                            concertsDOMManager.renderResults(data._embedded.events, totalPages, topic, searchText, `${e.target.id}`);
+                        } else {
+                            concertsDOMManager.renderResults(noGenreMess, totalPages, topic);
+                        }
+                    });
+            } else if (topic == "keyword") {
+                APIManager.searchConcert(searchText, topic, `&${topic}=`, j)
+                    .then(data => {
+                        const totalPages = data.page.totalPages;
+                        if ("_embedded" in data) {
+                            concertsDOMManager.renderResults(data._embedded.events, totalPages, topic, searchText);
+                        } else {
+                            concertsDOMManager.renderResults(noGenreMess, totalPages, topic);
+                        }
+                    });
+            }
+        });
     },
 };
-concertEventManager.addEnterEvent("concerts");
-concertEventManager.addEnterEvent("concerts-keyword");
-
-concertEventManager.addKeywordButtonEvent();
-concertEventManager.navbarEvent();
