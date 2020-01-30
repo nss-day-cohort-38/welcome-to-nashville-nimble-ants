@@ -30,7 +30,7 @@ document
     const cuisine = document.getElementById("cuisineSelect").value;
     const URL = `https://developers.zomato.com/api/v2.1/search?entity_id=1138&cuisines=${cuisine}&entity_type=city&apikey=${restaurantKey}`;
     let loader = `<div class="boxLoading">Loading Searches...</div>`;
-    document.getElementById("search-results").innerHTML = loader;
+    document.getElementById("search-results").innerHTML = "loader";
     fetch(URL)
       .then(response => response.json())
       .then(restaurants => {
