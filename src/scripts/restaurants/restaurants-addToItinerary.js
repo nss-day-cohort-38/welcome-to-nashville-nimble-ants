@@ -6,8 +6,8 @@ document.querySelector("body").addEventListener("click", function(event) {
     const restaurantName = document.getElementById(`restaurant-name-${id}`)
       .innerHTML; // gabbing reference to the id of the restaurant name that was clicked.
     // console.log(restaurantName);
-    const itineraryContainer = document.getElementById("itinerary");
-    itineraryContainer.innerHTML += '';
+    const searchResultsContainer = document.getElementById("search-results");
+    searchResultsContainer.innerHTML += '';
     const itinerarySection = document.getElementById("restaurant__itin");
     console.log("restaurantName: ", restaurantName);
     itinerarySection.innerHTML = `Restaurant: ${restaurantName}`;
