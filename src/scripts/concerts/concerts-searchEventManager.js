@@ -12,14 +12,10 @@ const concertEventManager = {
             
             searchForm.innerHTML = "";
             document.getElementById("search-results").innerHTML = "";
-            // concertsDOMManager.renderSearch(searchForm);
             const nameArray = ["Genres", "Keyword"];
             if (needsDropdown) {
                 concertsDOMManager.renderDropDown(navbarDrop, nameArray, "concerts");
             }
-            
-            // getGenreInformation.getGenreList();
-            // this.addKeywordButtonEvent();
         });
     },
     dropEvent(id) {        
